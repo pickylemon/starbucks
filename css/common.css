@@ -406,3 +406,20 @@ footer .logo {
   현재 이 프로젝트에서는 img요소에 위에서 이미 display: block 지정했으므로 ㅇㅋ*/
   margin: 30px auto 0; /*상 중 하*/
 }
+
+#to-top {
+  width: 42px;
+  height: 42px;
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9;
+}

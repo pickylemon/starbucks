@@ -1,4 +1,5 @@
 const badgeEl = document.querySelector('header .badges');
+const toTopEl = document.querySelector('#to-top');
 
 window.addEventListener('scroll', _.throttle(function() { 
   console.log(window.scrollY);
@@ -11,6 +12,11 @@ window.addEventListener('scroll', _.throttle(function() {
       display: 'none'
     });
     // badgeEl.style.display='none';
+
+    //화살표 버튼 보이기! (원래 위치)
+    gsap.to(toTopEl, .2, {
+      x: 0
+    }); //gsap.to()는 CSS 선택자만으로도 요소를 찾을 수 있다.
   }else {
     //배지 다시 보여주기
     gsap.to(badgeEl, .6, {
@@ -18,9 +24,22 @@ window.addEventListener('scroll', _.throttle(function() {
       display: 'block'
     });
     // badgeEl.style.display='block';
+
+    //화살표 버튼 숨기기!
+    gsap.to('#to-top', .2, {
+      x: 100
+    }); //gsap.to()는 CSS 선택자만으로도 요소를 찾을 수 있다.
+
   }
 }, 300)); //0.3초 단위로 부하를 설정해서 함수가 한번에 너무 많은 수가 실행되는 것을 방지
 // _.throttle(함수, 시간)
+
+//toTopEl에 클릭이벤트 걸기
+toTopEl.addEventListener('click', function(){
+  gsap.to(window, .7, {
+    scrollTo: 0 //화면의 위치를 0으로 옮기겠다(최상단) gsap scrollToPlugin 라이브러리를 추가했기에 쓸 수가 있음
+  });
+});
 
 const fadeEls = document.querySelectorAll('.visual .fade-in');
 fadeEls.forEach(function(fadeEl, index){
